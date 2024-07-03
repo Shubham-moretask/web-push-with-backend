@@ -42,7 +42,7 @@ async function registerPush(registration) {
 async function sendSubscriptionToServer(subscription) {
   try {
     console.log('Sending Push Subscription to Server...');
-    await fetch('/subscribe', {
+    await fetch('https://web-push-with-backend.onrender.com/subscribe', {
       method: 'POST',
       body: JSON.stringify(subscription),
       headers: {
