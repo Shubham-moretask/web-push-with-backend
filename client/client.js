@@ -13,7 +13,7 @@ if ('serviceWorker' in navigator) {
 async function registerServiceWorker() {
   try {
     console.log('Registering Service Worker...');
-    const registration = await navigator.serviceWorker.register('/worker.js');
+    const registration = await navigator.serviceWorker.register('https://cdn.jsdelivr.net/gh/Shubham-moretask/web-push-with-backend/client/worker.js');
     console.log('Service Worker Registered:', registration);
 
     // Register for push notifications
