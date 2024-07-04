@@ -13,7 +13,7 @@ if ('serviceWorker' in navigator) {
 async function registerServiceWorker() {
   try {
     console.log('Registering Service Worker...');
-    const registration = await navigator.serviceWorker.register('/worker.js');
+    const registration = await navigator.serviceWorker.register('https://web-push-with-backend.onrender.com/worker.js');
     console.log('Service Worker Registered:', registration);
 
     // Register for push notifications
