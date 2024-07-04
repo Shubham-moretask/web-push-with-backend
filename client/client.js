@@ -4,16 +4,13 @@ const privateVapidKey="IJkrCjxCNmbelKQ9MFdCIQXGv-oThPZ16_-1wM-NSus"
 
 // Check for service worker support
 if ('serviceWorker' in navigator) {
-  // Register service worker dynamically
-  console.log("first run ")
-  
   registerServiceWorker().catch(err => console.error(err));
 }
 
 async function registerServiceWorker() {
   try {
     console.log('Registering Service Worker...');
-    const registration = await navigator.serviceWorker.register('https://web-push-with-backend.onrender.com/worker.js');
+    const registration = await navigator.serviceWorker.register('/worker.js');
     console.log('Service Worker Registered:', registration);
 
     // Register for push notifications
@@ -40,11 +37,24 @@ async function registerPush(registration) {
 }
 
 async function sendSubscriptionToServer(subscription) {
+
   try {
-    console.log('Sending Push Subscription to Server...');
+
+    console.log('Sending Push Subscription to Server...',subscription);
+    
+    // Add website name to the subscription data
+    const subscriptionWithWebsite = {
+      subscription: subscription,
+      website: window.location.hostname
+    };
+
+   
+
+    console.log(subscription,"check",subscriptionWithWebsite)
+
     await fetch('https://web-push-with-backend.onrender.com/subscribe', {
       method: 'POST',
-      body: JSON.stringify(subscription),
+      body: JSON.stringify(subscriptionWithWebsite),
       headers: {
         'Content-Type': 'application/json'
       }

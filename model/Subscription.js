@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const subscriptionSchema = new mongoose.Schema({
     endpoint: {
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     keys: {
         p256dh: {
@@ -14,7 +15,11 @@ const subscriptionSchema = new mongoose.Schema({
             type: String,
             required: true
         }
-    }
+    },
+    website: { type: String, required: true } 
+   
+}, {
+    timestamps:true
 });
 
 const Subscription = mongoose.model('Subscription', subscriptionSchema);
