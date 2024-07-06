@@ -7,9 +7,8 @@ const cors=require("cors");
 const Subscription = require('./model/Subscription');
 const db = require('./config/db');
 const app = express();
-const request = require('request'); // Add this line
 
-const port = 8080;
+const port = 5000;
 dotenv.config();
 
 
@@ -85,17 +84,7 @@ app.post('/sendNotification', async (req, res) => {
 });
 
 
-//---this line comment ---->
 
-// Proxy endpoint for worker.js
-app.get('/worker.js', (req, res) => {
-  console.log("hii this is fine")
-  const remoteUrl = 'https://cdn.jsdelivr.net/gh/Shubham-moretask/web-push-with-backend/client/worker.js'; // Replace with your CDN URL
-  request(remoteUrl).pipe(res);
-});
-
-
-//---> 
 
 app.post('/sendNotifications', async (req, res) => {
   try {
