@@ -51,8 +51,8 @@ async function sendSubscriptionToServer(subscription) {
    
 
     console.log(subscription,"check",subscriptionWithWebsite)
-
-    await fetch('https://web-push-with-backend.onrender.com/subscribe', {
+    // https://web-push-with-backend.onrender.com
+    await fetch('/subscribe', {
       method: 'POST',
       body: JSON.stringify(subscriptionWithWebsite),
       headers: {
