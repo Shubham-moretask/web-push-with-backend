@@ -114,6 +114,21 @@ app.post('/sendNotifications', async (req, res) => {
 });
 
 
+app.get("/allSubscription",async(req,res)=>{
+  try {
+    const subscriptions = await Subscription.find();
+    const subscriptionCount = subscriptions.length;
+
+    return res.status(200).json({data:subscriptionCount})
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({error:"Internal Server Error"});
+  }
+
+
+
+})
+
 // Start server
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
